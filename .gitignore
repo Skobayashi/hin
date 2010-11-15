@@ -1,0 +1,4 @@
+# 無視file list
+webapps/cache/
+webapps/log/
+webapps/lib/vendor/symfony/
