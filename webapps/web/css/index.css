@@ -1,0 +1,78 @@
+a{
+	text-decoration: none;
+}
+
+#index tbody a{
+	display: block;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+table#index{
+	width: 1350px;
+	border-color: #9BAFF1;
+	border-style: solid;
+	border-top-width: 6px;
+	border-bottom-width: 6px;
+	background-color: #E8EDFF;
+}
+table#index a{
+	color: #444444;
+}
+#index thead th{
+	border-bottom: 1px dotted #9BAFF1;
+	border-right: solid 1px #9BAFF1;
+	background-color: #B9C9FE;
+}
+#index tfoot th{
+	border-top: 1px dotted #9BAFF1;
+	border-right: solid 1px #9BAFF1;
+	background-color: #B9C9FE;
+}
+#index tbody td{
+	border-right: solid 1px #9BAFF1;
+}
+#index tr.odd{
+	background-color: white;
+}
+#index tbody tr:hover{
+	background-color: #D0DAFD;
+	border: solid 1px silver; 
+}
+
+table#index td.center{
+	text-align: center;
+}
+table.pager{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+table.pager td{
+	padding: 3px;
+	padding-left: 7px;
+	padding-right: 7px;
+	border: solid 1px lightgrey;
+}
+table.pager td[name]:hover{
+	background-color: lightgrey;
+	border: solid 1px dimgray;
+}
+table.pager td.nowpage{
+	background-color: dimgray;
+	color: white;
+	border: solid 1px lightgrey;
+}
+table.pager a{
+	color: black;
+	display: block;
+	width: 100%;
+}
+table.pager td.none{
+	background-color: white;
+	border: none;
+}
+form.pageform{
+	height: 33px;
+	margin-left: 5px;
+}

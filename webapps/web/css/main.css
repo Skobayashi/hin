@@ -1,0 +1,72 @@
+body{
+	margin: 18px;
+	font-family: Arial;
+	font-size: 0.9em;
+}
+a.top{
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+}
+select#hin_models_list{
+	width: 170px;
+	height: 150px;
+}
+select#hin_author_id{
+	width: 230px;
+}
+ul.error_list {
+	padding: 2px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: red;
+	font-weight: bolder;
+	list-style-type: none;
+}
+tfoot td{
+	text-align: right;
+}
+p#model{
+	margin: 5px;
+	margin-top: 130px;;
+	float: right;
+}
+p#author{
+	margin: 5px;
+	float: right;
+}
+h4.add{
+	color: red;
+}
+div.now{
+	margin: 5px;
+	margin-top: 20px;
+	width: 300px;
+	height: 300px;
+	overflow: auto;
+}
+div.now table{
+	width: 200px;
+}
+div.now td{
+	height: 23px;
+}
+form#xml{
+	margin-top: 8px;
+	height: 30px;
+}
+div#news{
+	color: red;
+	font-weight: bold;
+}
+img#caution{
+	height: 25px;
+	width: 25px;
+}
+
+p.contact{
+	position:absolute;
+	top: 10px;
+	right: 10px;
+}

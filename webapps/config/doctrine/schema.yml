@@ -1,0 +1,57 @@
+Hin:
+  actAs:        { Timestampable: ~ }
+  tableName:    hin
+  columns:
+    id:           { type: integer(4) , primary: true , autoincrement: true }
+    author_id:    { type: integer(4) }
+    dispatchday:  { type: date }  #発信日
+    modelnumber:  { type: string(100) }  #機番
+    hourmeter:    { type: string(30) }  #アワメータ
+    delivery:     { type: date }  #納入年月
+    user:         { type: string(50) }  #ユーザ名
+    outbreak:     { type: date }  #発生日
+    attachment:   { type: string(50) }  #アタッチメント
+    message:      { type: string(50) }  #メッセージ
+    contents:     { type: string(255) }  #内容
+    management:   { type: string(50) }  #管理表No
+
+  relations:
+    Author:
+      foreignAlias: Hins
+    Models:
+      class:       Model
+      refClass:    HM
+      foreignAlias: Hins
+
+##############################################################
+Author:
+  actAs:        { Timestampable: ~ }
+  tableName:   author
+  columns:
+    id:    { type: integer(4) , primary: true , autoincrement: true }
+    name:  { type: string(20) } #発信部所名
+
+##############################################################
+Model:
+  actAs:        { Timestampable: ~ }
+  tableName:   model
+  columns:
+    id:    { type: integer(4), primary: true , autoincrement: true }
+    name:  { type: string(15) , notnull: true } #機種名
+
+##############################################################
+# Hin = Model
+##############################################################
+HM:
+  tableName: h_m
+  columns:
+    hin_id:  { type: integer(4), primary: true }
+    model_id: { type: integer(4), primary: true }
+
+  relations:
+    Hin:
+      foreignAlias: HMs
+    Model:
+      foreignAlias: HMs
+
+##############################################################

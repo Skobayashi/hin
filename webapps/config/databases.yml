@@ -1,0 +1,21 @@
+dev:
+  doctrine:
+    param:
+      classname:  DebugPDO
+
+test:
+  doctrine:
+    param:
+      classname:  DebugPDO
+
+all:
+  doctrine:
+    class:        sfDoctrineDatabase
+    param:
+      classname:  DoctrinePDO
+      dsn:        mysql:dbname=hin;host=localhost
+      username:   root
+      password:   root
+      encoding:   utf8
+      persistent: true
+      pooling:    true

@@ -1,0 +1,39 @@
+table#form{
+	border-color: #9BAFF1;
+	border-style: solid;
+	border-top-width: 6px;
+	border-bottom-width: 6px;
+	background-color: #E8EDFF;
+}
+
+#form th{
+	border-bottom: 1px dotted #9BAFF1;
+	background-color: #B9C9FE;
+}
+#form tfoot th{
+	border-top: 1px dotted #9BAFF1;
+	background-color: #B9C9FE;
+}
+#form td{
+	border-top: 1px dotted #9BAFF1;
+	vertical-align: middle;
+}
+
+table#form td.center{
+	text-align: center;
+}
+
+table.contact{
+	width: 500px;
+}
+
+table#form th#user{
+	width: 150px;
+	height: 40px;
+}
+
+table#form th#title{
+	width: 150px;
+	height: 40px;
+}
+

@@ -1,0 +1,20 @@
+indexSuccess:
+  stylesheets:   [index]
+
+newSuccess:
+  stylesheets:  [form]
+
+showSuccess:
+  stylesheets:  [form]
+
+editSuccess:
+  stylesheets:  [form]
+
+additemSuccess:
+  stylesheets:  [form]
+  
+contactSuccess:
+  stylesheets:  [form]
+
+confirmSuccess:
+  stylesheets:  [form]
