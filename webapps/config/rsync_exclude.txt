@@ -1,5 +1,14 @@
 .svn
-/web/uploads/*
-/cache/*
+.tmp*
+/.project
+/cwrsync*
+/doc/*
 /log/*
-/web/*_dev.php
+/cache/*
+/.cache/
+/.settings/
+/configure.yml
+/config/config.php
+.buildpath
+.registry
+.channels
