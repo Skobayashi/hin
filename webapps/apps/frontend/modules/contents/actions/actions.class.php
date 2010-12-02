@@ -28,6 +28,8 @@ class contentsActions extends sfActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new HinForm();
+    $count = Doctrine::getTable('Hin')->createQuery('h')->count();
+    $this->id = 'No.' . ($count + 1) . ' 新規作成';
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -45,6 +47,7 @@ class contentsActions extends sfActions
   {
     $this->forward404Unless($hin = Doctrine::getTable('Hin')->find($request->getParameter('id')), sprintf('Object hin does not exist (%s).', $request->getParameter('id')));
     $this->form = new HinForm($hin);
+    $this->id = 'No.' . $hin->id . ' 編集';
   }
 
   public function executeUpdate(sfWebRequest $request)
