@@ -11,7 +11,7 @@
     	<p class="contact" ><?php echo link_to('投書コーナー' , 'contents/contact')?></p>
         <div id="news">
             <p><?php echo image_tag('caution.jpg' , array('id' => 'caution')) ?>
-			<?php echo ' 臨在ニュース！　発信部署「大阪住重建機㈱」「川重　函館」を追加しました！'?>
+			<?php echo ' 臨在ニュース！　発信部署「キナン紀伊長島」を追加しました！'?>
         </div>
         <?php echo $sf_content?>
     </body>
