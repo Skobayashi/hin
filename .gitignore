@@ -2,3 +2,10 @@
 webapps/cache/
 webapps/log/
 webapps/lib/vendor/symfony/
+.DS_Store
+.buildpath
+.project
+.settings/
+webapps/config/databases.yml
+
+

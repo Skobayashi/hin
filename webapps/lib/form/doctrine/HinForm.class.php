@@ -11,8 +11,9 @@ class HinForm extends BaseHinForm
 {
   public function configure()
   {
-  	$years2 = range(2001 , date('Y' , time()) + 5);
+  	$years2 = range(date('Y' , time()) - 5 , date('Y' , time()));
 	$years = range(2000 , date('Y' , time()) + 5);
+	$delivery_year = range(1990, date('Y' , time()));
   	unset($this['created_at'] , $this['updated_at'] );
   	$authorId = AuthorTable::getId();
 	$modelId = ModelTable::getId();
@@ -23,7 +24,7 @@ class HinForm extends BaseHinForm
 	$this->widgetSchema['models_list'] = new sfWidgetFormChoice(array('choices' => $modelName , 'multiple' => TRUE));
 	$this->widgetSchema['dispatchday'] = new sfWidgetFormDate(array('format' => '%year% / %month% / %day%' , 'years' => array_combine($years2 , $years2)));
 	$this->widgetSchema['outbreak'] = new sfWidgetFormDate(array('format' => '%year% / %month% / %day%' , 'years' => array_combine($years2 , $years2)));
-	$this->widgetSchema['delivery'] = new sfWidgetFormDate(array('format' => '%year% / %month% / %day%' , 'years' => array_combine($years , $years)));
+	$this->widgetSchema['delivery'] = new sfWidgetFormDate(array('format' => '%year% / %month% / %day%' , 'years' => array_combine($delivery_year , $delivery_year)));
 	$this->widgetSchema['message'] = new sfWidgetFormInput(array() , array('size' => 60));
 	$this->widgetSchema['contents'] = new sfWidgetFormTextarea(array() , array('cols' => 29 , "rows" => 3));
 	$this->widgetSchema['management'] = new sfWidgetFormInput(array() , array('size' => 60));

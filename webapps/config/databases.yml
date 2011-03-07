@@ -14,8 +14,8 @@ all:
     param:
       classname:  DoctrinePDO
       dsn:        mysql:dbname=hin;host=localhost
-      username:   root
-      password:   root
+      username:   sf
+      password:   sfiii
       encoding:   utf8
       persistent: true
       pooling:    true
