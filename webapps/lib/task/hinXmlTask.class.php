@@ -35,6 +35,8 @@ protected function execute($arguments = array(), $options = array()) {
             
         if ($arguments['id'] != 'all' and preg_match("/^[0-9]+$/", $arguments['id']) != TRUE)
             throw new sfException('ERROR!!! Please put "all" or "hin_id" in the second argument.');
+
+        set_time_limit(0);
             
         switch ($arguments['id']) {
         
@@ -87,6 +89,41 @@ protected function execute($arguments = array(), $options = array()) {
                         $attachment->appendChild($dom->createTextNode($hin['attachment']));
                         $contents = $header->appendChild($dom->createElement('内容'));
                         $contents->appendChild($dom->createTextNode($hin['contents']));
+
+                        $xpath = new DOMXpath($dom);
+
+                        $search = $xpath->query('//SearchInformation');
+                        if($search->item(0) == null) {
+                            $hij = $xpath->query('//品質情報連絡票');
+
+                            $search = $dom->createElement('SearchInformation');
+                            $hij->item(0)->appendChild($search);
+
+                            $item = $dom->createElement('SearchItem');
+                            $search->appendChild($item);
+
+                            $book = $dom->createElement('ID_BOOK', 'hij');
+                            $item->appendChild($book);
+
+                            $page = $dom->createElement('ID_PAGE', $hin['id'] . '.xml');
+                            $item->appendChild($page);
+
+                            $book = $dom->createElement('JA_BOOK', '品質情報連絡表');
+                            $item->appendChild($book);
+
+                            $type = $dom->createElement('JA_BOOK', 'ショベル');
+                            $item->appendChild($type);
+
+                            if($modeler != '') {
+                                $model = $dom->createElement('MODEL', $modeler);
+                                $item->appendChild($model);
+                            }
+
+                            if($hin['contents'] != '') {
+                                $content = $dom->createElement('DESCRIPTION_11', $hin['contents']);
+                                $item->appendChild($content);
+                            }
+                        }
                         
                         $dom->save($directory.'/'.$hin['id'].'.xml');
                         
@@ -147,6 +184,41 @@ protected function execute($arguments = array(), $options = array()) {
                     $attachment->appendChild($dom->createTextNode($hin['attachment']));
                     $contents = $header->appendChild($dom->createElement('内容'));
                     $contents->appendChild($dom->createTextNode($hin['contents']));
+
+                    $xpath = new DOMXpath($dom);
+
+                    $search = $xpath->query('//SearchInformation');
+                    if($search->item(0) == null) {
+                        $hij = $xpath->query('//品質情報連絡票');
+
+                        $search = $dom->createElement('SearchInformation');
+                        $hij->item(0)->appendChild($search);
+
+                        $item = $dom->createElement('SearchItem');
+                        $search->appendChild($item);
+
+                        $book = $dom->createElement('ID_BOOK', 'hij');
+                        $item->appendChild($book);
+
+                        $page = $dom->createElement('ID_PAGE', $hin['id'] . '.xml');
+                        $item->appendChild($page);
+
+                        $book = $dom->createElement('JA_BOOK', '品質情報連絡表');
+                        $item->appendChild($book);
+
+                        $type = $dom->createElement('JA_BOOK', 'ショベル');
+                        $item->appendChild($type);
+
+                        if($modeler != '') {
+                            $model = $dom->createElement('MODEL', $modeler);
+                            $item->appendChild($model);
+                        }
+
+                        if($hin['contents'] != '') {
+                            $content = $dom->createElement('DESCRIPTION_11', $hin['contents']);
+                            $item->appendChild($content);
+                        }
+                    }
                     
                     $dom->save($directory.'/'.$arguments['id'].'.xml');
                     

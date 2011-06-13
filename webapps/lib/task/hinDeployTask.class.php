@@ -16,7 +16,7 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfProjectDeployTask.class.php 23922 2009-11-14 14:58:38Z fabien $
  */
-class myProjectDeployTask extends sfProjectDeployTask
+class hinDeployTask extends sfProjectDeployTask
 {
   protected
     $outputBuffer = '',
@@ -135,7 +135,7 @@ EOF;
 	    {
 			$instance_dir = dirname(__FILE__);
 			$instance_dir = explode(DIRECTORY_SEPARATOR, $instance_dir);
-			$user_dir = $instance_dir[count($instance_dir)-5];
+			$user_dir = $instance_dir[count($instance_dir)-6];
 			$key = sprintf($properties['key'], $user_dir);
 	    }
 	    else
@@ -157,8 +157,9 @@ EOF;
     
     $dryRun = $options['go'] ? '' : '--dry-run';
     $command = "rsync $dryRun $parameters -e $ssh ./ $user$host:$dir";
-	
-    $this->getFilesystem()->execute($command, true ? array($this, 'logOutput') : null, array($this, 'logErrors'));
+
+    exec($command);
+    //$this->getFilesystem()->execute($command, true ? array($this, 'logOutput') : null, array($this, 'logErrors'));
 
     $this->clearBuffers();
   }
