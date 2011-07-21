@@ -34,6 +34,7 @@ p#model{
 }
 p#author{
 	margin: 5px;
+    margin-left: 40px;
 	float: right;
 }
 h4.add{
