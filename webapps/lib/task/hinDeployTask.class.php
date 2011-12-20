@@ -158,8 +158,57 @@ EOF;
     $dryRun = $options['go'] ? '' : '--dry-run';
     $command = "rsync $dryRun $parameters -e $ssh ./ $user$host:$dir";
 
-    exec($command);
+    //exec($command);
     //$this->getFilesystem()->execute($command, true ? array($this, 'logOutput') : null, array($this, 'logErrors'));
+
+    $descriptorspec = array(
+      1 => array('pipe', 'w'), // stdout
+      2 => array('pipe', 'w'), // stderr
+    );
+
+    $process = proc_open($command, $descriptorspec, $pipes);
+
+    if(! is_resource($process)) {
+        throw new Exception('コマンドが実行できません');
+    }
+
+    stream_set_blocking($pipes[1], false);
+    stream_set_blocking($pipes[2], false);
+
+    $output = '';
+    $err = '';
+    $buffer = '';
+
+    while (!feof($pipes[1]) || !feof($pipes[2])) {
+        foreach($pipes as $k => $pipe) {
+            if(! $line = fread($pipe, 128)) {
+                continue;
+            }
+
+            if($k == 1) {
+                $output .= $line;
+
+                if(false !== $pos = strpos($line, "\n")) {
+                    $buffer .= substr($line, 0, $pos);
+                    echo "$buffer \n";
+                    $buffer = substr($line, $pos + 1);
+                } else {
+                    $buffer .= $line;
+                }
+            } else {
+                $err .= $line;
+
+                if(false !== $pos = strpos($line, "\n")) {
+                    $buffer .= substr($line, 0, $pos);
+                    echo "error: $buffer \n";
+                    $buffer = substr($line, $pos + 1);
+                } else {
+                    $buffer .= $line;
+                }
+            }
+        }
+        usleep(100000);
+    }
 
     $this->clearBuffers();
   }

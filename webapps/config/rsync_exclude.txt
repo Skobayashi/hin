@@ -12,3 +12,4 @@
 .buildpath
 .registry
 .channels
+.DS_Store
